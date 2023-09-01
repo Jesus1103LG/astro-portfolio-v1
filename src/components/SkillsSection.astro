@@ -1,0 +1,49 @@
+---
+import ImgComponent from "./ImgComponent.astro";
+---
+
+<div class="md:grid md:grid-cols-2 sm:grid sm:grid-col-1 gap-10 gap-x-[300px]">
+  <div class="min-[360px]:pb-10">
+    <h3
+      class="text-lg font-semibold mb-5 capitalize inline-block border-b-2 border-[#2B59C3]"
+    >
+      Frontend:
+    </h3>
+    <ImgComponent
+      images={[
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "astro",
+        "react",
+        "nextjs",
+        "bootstrap",
+        "tailwindcss",
+      ]}
+    />
+  </div>
+  <div class="min-[360px]:pb-10">
+    <h3
+      class="text-lg font-semibold mb-5 capitalize inline-block border-b-2 border-[#2B59C3]"
+    >
+      Backend:
+    </h3>
+    <ImgComponent images={["nodejs", "Django"]} />
+  </div>
+  <div class="min-[360px]:pb-10">
+    <h3
+      class="text-lg font-semibold mb-5 capitalize inline-block border-b-2 border-[#2B59C3]"
+    >
+      Graphic Desing:
+    </h3>
+    <ImgComponent images={["figma"]} />
+  </div>
+  <div class="min-[360px]:pb-10">
+    <h3
+      class="text-lg font-semibold mb-5 capitalize inline-block border-b-2 border-[#2B59C3]"
+    >
+      DataBase:
+    </h3>
+    <ImgComponent images={["mariadb", "mysql"]} />
+  </div>
+</div>

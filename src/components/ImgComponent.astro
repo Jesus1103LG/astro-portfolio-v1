@@ -1,0 +1,18 @@
+---
+interface Props {
+  images?: string[];
+}
+const { images = [""] } = Astro.props;
+---
+
+<div class="lg:grid lg:grid-col-5 md:grid md:grid-cols-4 min-[360px]:grid min-[360px]:grid-cols-3 items-end justify-start md:w-[350px] lg:w-[400px] gap-x-5">
+  {images.map((img)=>{
+    return (
+      <div class="flex flex-col justify-center items-center">
+        <img decoding="async" loading="lazy" class="rounded" width="50" height="50" src=`/icons/${img}.svg` alt={img} class="w-[50px] h-[50px]">
+        <p class="text-gray-500 mb-3 capitalize">{img}</p>     
+      </div>
+    )
+  })}
+</div>
+

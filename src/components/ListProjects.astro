@@ -1,0 +1,30 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+import { dataProjects } from "../data/dataProject.js";
+---
+
+<div class="grid grid-cols-2 place-items-center gap-y-[50px] gap-x-[100px]">
+  {
+    dataProjects.map(
+      ({
+        title,
+        description,
+        technologies,
+        urlRepo,
+        urlView,
+        imgBackground,
+      }) => {
+        return (
+          <ProjectCard
+            title={title}
+            description={description}
+            technologies={technologies}
+            urlRepo={urlRepo}
+            urlView={urlView}
+            imgBackground={imgBackground}
+          />
+        );
+      }
+    )
+  }
+</div>

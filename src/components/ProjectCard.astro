@@ -1,0 +1,90 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  technologies?: string[];
+  urlRepo?: string;
+  urlView?: string;
+  imgBackground?: string;
+}
+
+const {
+  title,
+  description = "default text",
+  technologies = [],
+  urlRepo = "",
+  urlView = "",
+  imgBackground = "",
+} = Astro.props;
+---
+
+<div
+  style=`background:url(${imgBackground}) no-repeat; background-size: cover; width:auto; height:250px`
+  class="rounded shadow-[1px_1px_10px_.5px_rgba(0,0,0,0.3)] [&>header]:hover:visible [&>header]:hover:bg-[rgba(0,0,0,.9)] [&>header]:hover:rounded-t [&>header]:hover:transition-all duration-300 [&>header]:invisible"
+>
+  <header class="h-[80%] px-5 flex flex-col gap-3 py-3">
+    <h3
+      class="text-2xl text-white capitalize inline-block border-b-2 border-[#2B59C3]"
+    >
+      {title}
+    </h3>
+    <p class="text-sm text-gray-200 tracking-wide">{description}</p>
+  </header>
+  <footer class="flex justify-between h-[20%] bg-[#444] rounded-b px-5">
+    <div class="flex gap-2 justify-center items-center">
+      {
+        technologies.map((tech) => {
+          return (
+            <img
+              width="25"
+              height="25"
+              class="rounded"
+              src={`/icons/${tech}.svg`}
+              alt={tech}
+            />
+          );
+        })
+      }
+    </div>
+    <div class="flex gap-1 justify-center items-center">
+      {
+        urlView ? (
+          <a
+            class="hover:scale-125 transition-all duration-150"
+            target="_blank"
+            href={urlView}
+          >
+            <img
+              width="30"
+              height="40"
+              class="filter invert"
+              src="/icons/view.svg"
+              alt=""
+            />
+          </a>
+        ) : (
+          <div />
+        )
+      }
+      {
+        urlRepo ? (
+          <a
+            class="hover:scale-125 transition-all duration-150"
+            target="_blank"
+            href={urlRepo}
+          >
+            <img
+              width="40"
+              height="40"
+              class="filter invert"
+              src="/icons/github.svg"
+              alt=""
+            />
+          </a>
+        ) : (
+          <div />
+        )
+      }
+    </div>
+  </footer>
+</div>

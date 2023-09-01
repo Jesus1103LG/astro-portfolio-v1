@@ -1,0 +1,151 @@
+---
+export const prerender = true;
+import Layout from "../layouts/Layout.astro";
+import HeaderPage from "../components/HeaderPage.astro";
+import SkillsSection from "../components/SkillsSection.astro";
+import ListProjects from "../components/ListProjects.astro";
+---
+
+<Layout>
+  <HeaderPage />
+  <main
+    class="min-[360px]:[&>section]:px-[5%] lg:[&>section]:px-[15%] lg:[&>section]:pb-[50px]"
+  >
+    <section
+      class="h-screen flex items-center md:justify-center lg:justify-between"
+    >
+      <div class="sm:w-full md:w-1/2 lg:w-1/2">
+        <div
+          class="absolute top-1/2 left-1/2 sm:left-1/3 transform -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-[#2B59C3] to-transparent opacity-50 rounded-full blur-[45px] h-32 w-32"
+        >
+        </div>
+        <h1
+          class="text-[40px] font-bold bg-gradient-to-r from-[#2B59C3] to bg-cyan-500 bg-clip-text text-transparent"
+        >
+          Jesus Lopez
+        </h1>
+        <h2 class="text-2xl font-bold capitalize font-code text-current">
+          Full Stack Web Developer
+        </h2>
+        <p class="md:w-[340px] w-auto sm:mb-4 text-gray-500 text-lg">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+          tempora quaerat ullam veritatis nostrum eos commodi delectus id autem
+          quasi!
+        </p>
+        <footer id="git-link-mail" class="flex items-center">
+          <a
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/jesus-gabriel-lopez-gonzalez"
+            target="_blank"
+            ><img
+              class="hover:scale-125 transition-transform duration-200 ease-in-out"
+              height="35"
+              width="35"
+              src="/icons/linkedin.svg"
+              alt="Linkeding"
+              loading="lazy"
+              decoding="async"
+            /></a
+          >
+          <a rel="noopener noreferrer" href="#" target="_blank"
+            ><img
+              class="hover:scale-125 transition-transform duration-200 ease-in-out"
+              style=""
+              height="35"
+              width="35"
+              src="/icons/gmail.svg"
+              alt="Mail"
+            /></a
+          >
+          <a
+            rel="noopener noreferrer"
+            href="https://github.com/Jesus1103LG"
+            target="_blank"
+            ><img
+              class="hover:scale-125 transition-transform duration-200 ease-in-out"
+              height="35"
+              width="35"
+              src="/icons/github.svg"
+              alt="Github"
+            /></a
+          >
+        </footer>
+      </div>
+      <div
+        id="sol"
+        style="background: url(/bg-home/sol.svg) no-repeat;background-size: cover; width:350px; height: 350px;"
+        class="lg:w-1/2"
+      >
+        <img
+          class="relative -top-5 animate-slide-top"
+          width="356"
+          height="234"
+          src="/bg-home/nubes.svg"
+          alt="Nubes"
+        />
+      </div>
+    </section>
+    <section>
+      <h2 class="text-[40px] text-center mb-10">Skills</h2>
+      <SkillsSection />
+    </section>
+    <section>
+      <h2 class="text-[40px] text-center mb-10">Project</h2>
+      <ListProjects />
+    </section>
+  </main>
+  <footer
+    class="bg-[#2B59C3] text-white w-full h-10 flex items-center justify-center py-10 tracking-widest"
+  >
+    <h4 class="text-center">Jesus Lopez |</h4>
+    <a
+      class="flex items-center justify-center"
+      href="https://github.com/Jesus1103LG"
+    >
+      @Jesus1103LG <img
+        class="filter invert"
+        height="30"
+        width="30"
+        src="/icons/github.svg"
+        alt="Github"
+      /></a
+    >
+  </footer>
+</Layout>
+
+<style>
+  @media (max-width: 855px) {
+    #sol {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const $check = document.getElementById("check");
+  const $sol = document.getElementById("sol");
+  const $link_info = [...document.querySelectorAll("#git-link-mail img")];
+
+  $check.addEventListener("click", () => {
+    if ($check.checked) {
+      $sol.setAttribute(
+        "style",
+        "background: url(/bg-home/luna.svg) no-repeat;background-size: cover; width:350px; height: 350px; transition:all .3s ease-out;"
+      );
+      $link_info.map((img) => {
+        img.setAttribute(
+          "style",
+          "filter: invert();transition:all .3s ease-out;"
+        );
+      });
+    } else {
+      $sol.setAttribute(
+        "style",
+        "background: url(/bg-home/sol.svg) no-repeat;background-size: cover; width:350px; height: 350px; transition:all .3s ease-out;"
+      );
+      $link_info.map((img) => {
+        img.setAttribute("style", "filter:; transition:all .3s ease-out;");
+      });
+    }
+  });
+</script>

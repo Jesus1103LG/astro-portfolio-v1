@@ -1,0 +1,131 @@
+---
+
+---
+
+<header
+  id="landing-header"
+  class="py-3 min-[360px]:px-[5%] lg:px-[15%] sm:items-start md:items-center absolute top-0 w-full flex justify-between z-40"
+>
+  <div class="md:flex-none flex flex-grow basis-0">
+    <a
+      href="/"
+      class="sm:py-0 md:py-2 cursor-pointer hover:scale-110 transition-transform duration-200 ease-in-out"
+      ><svg
+        width="28"
+        height="28"
+        fill="none"
+        stroke="currentColor"
+        strokewidth="1.5"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-7 h-7 text-current font-bold"
+        ><path
+          d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
+          strokelinecap="round"
+          strokelinejoin="round"></path></svg
+      ></a
+    >
+  </div>
+  <nav>
+    <div class="md:hidden flex items-center">
+      <button class="outline-none mobile-menu-button">
+        <svg
+          class="w-6 h-6 text-gray-500"
+          x-show="!showMenu"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+    <ul
+      class="[&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 hidden md:flex md:items-center space-x-1 mobile-menu"
+    >
+      <li><a href="#">Skills</a></li>
+      <li><a href="#">Project</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <nav
+    class="md:flex-none flex flex-grow justify-end md:justify-center basis-0"
+  >
+    <label
+      class="relative inline-flex sm:items-start md:items-center cursor-pointer"
+    >
+      <input id="check" type="checkbox" value="" class="sr-only peer" />
+      <div
+        class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-0 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-[#001E2B] peer-checked:after:translate-x-full peer-checked:after:border-none after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-[#2B59C3] peer-checked:after:bg-[#FFB802]"
+      >
+      </div>
+    </label>
+  </nav>
+  <div
+    id="menu-backdrop"
+    class={`
+    absolute bg-black/10 backdrop-blur-lg rounded
+    translate-x-[var(--left)] translate-y-[var(--top)]
+    left-0 top-0
+    w-[var(--width)] h-[var(--height)]
+    transition-all duration-300
+    ease-in-out opacity-0 -z-10
+  `}
+  >
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector("button.mobile-menu-button");
+  const menu = document.querySelector(".mobile-menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+
+<script>
+  const $check = document.getElementById("check");
+  const $body = document.body;
+  $check.addEventListener("click", () => {
+    if ($check.checked) {
+      $body.setAttribute(
+        "style",
+        "background: #001E2B; color: white; transition:all .3s ease-out;"
+      );
+    } else {
+      $body.setAttribute(
+        "style",
+        "background: #fff; color: black;transition:all .3s ease-out;"
+      );
+    }
+  });
+</script>
+
+<script>
+  const listItem = document.querySelectorAll("#landing-header li");
+  const menuBackDrop = document.querySelector("#menu-backdrop") as HTMLElement;
+
+  listItem.forEach((item) => {
+    item.addEventListener("mouseenter", () => {
+      const { left, top, width, height } = item.getBoundingClientRect();
+
+      menuBackDrop.style.setProperty("--left", `${left}px`);
+      menuBackDrop.style.setProperty("--top", `${top}px`);
+      menuBackDrop.style.setProperty("--width", `${width}px`);
+      menuBackDrop.style.setProperty("--height", `${height}px`);
+
+      menuBackDrop.style.opacity = "1";
+      menuBackDrop.style.visibility = "visible";
+    });
+
+    item.addEventListener("mouseleave", () => {
+      menuBackDrop.style.opacity = "0";
+      menuBackDrop.style.visibility = "hidden";
+    });
+  });
+</script>
