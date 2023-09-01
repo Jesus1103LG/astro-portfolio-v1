@@ -7,7 +7,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: "https://Jesus1103LG.github.io",
-  base: "/astro-portfolio-v1",
+  base: "/astro-portfolio-v1/client",
   integrations: [tailwind(), react()],
   output: "server",
   adapter: node({
